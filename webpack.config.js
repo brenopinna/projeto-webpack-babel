@@ -1,11 +1,22 @@
 const path = require("path")
 
 module.exports = {
+  // o webpack-dev-server é um servidor local integrado ao webpack: as mudanças feitas são automaticamente
+  // compiladas e mostradas no navegador.
+  devServer: {
+    // localização dos arquivos estáticos, por padrão é a pasta public.
+
+    // o arquivo html e os demais estáticos devem estar na mesma pasta, senão
+    // o devServer não atualiza sozinho o webpack.
+    static: {
+      directory: path.resolve(__dirname, "public"),
+    },
+  },
   entry: {
     index: "./src/js/index.js",
   },
   output: {
-    path: path.resolve(__dirname, "public/js"),
+    path: path.resolve(__dirname, "public"),
     filename: "[name].min.js",
   },
   mode: "production",
